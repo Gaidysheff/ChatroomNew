@@ -25,7 +25,11 @@
                     class="profile-image rounded-circle"
                   />
                 </td>
-                <td><a href="#">{{user.username}}</a></td>
+                <td>
+                  <a href="{% url 'chat' username=user.username %}"
+                    >{{user.username}}</a
+                  >
+                </td>
               </tr>
               {% endfor %}
 

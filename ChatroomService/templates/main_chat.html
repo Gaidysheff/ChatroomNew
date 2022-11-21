@@ -1,5 +1,6 @@
-{% extends 'base.html' %} {% load static %} {% block title %}WhatsApp{% endblock
-%} {% block css %}
+{% extends 'base.html' %} {% load static %}
+<title>{% block title %} My Chatting {% endblock %}</title>
+{% block css %}
 <link rel="stylesheet" href="{% static 'css/index.css' %}" />
 {% endblock %} {% block content %}
 <div class="back-container">
@@ -114,7 +115,9 @@
                   />
                 </td>
                 <td>
-                  <a href="#">{{user.username}}</a>
+                  <a href="{% url 'chat' username=user.username %}"
+                    >{{user.username}}</a
+                  >
                 </td>
               </tr>
               {% endfor %}
@@ -243,7 +246,8 @@
   </div>
 </div>
 {{user.id|json_script:"json-username"}}
-{{request.user.username|json_script:"json-message-username"}} {% endblock %} {%
-block javascript %}
+{{request.user.username|json_script:"json-message-username"}} {% endblock %}
+<br />
+{% block javascript %}
 <script src="{% static 'js/chat.js' %}"></script>
 {% endblock %}
